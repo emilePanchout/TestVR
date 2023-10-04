@@ -18,6 +18,8 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private CallRobotConfig config;
 
+    private Transform hitTransform;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +34,20 @@ public class RobotController : MonoBehaviour
             return;
 
         // Ajouter la condition si Trigger est pressé
-        if (false)
+        if (trigger.action.IsPressed())
         {
-            
+            RaycastHit hit;
+
+            if (ray.TryGetCurrent3DRaycastHit(out hit))
+            {
+                hitTransform = hit.transform;
+                hitTransform.position = hit.point;
+                Calling(hitTransform);
+
+                ray.enabled = false;
+
+                Debug.Log("Moving to " + hit.point);
+            }
         }
         else if (cancel.action.IsPressed())
         {
@@ -42,6 +55,7 @@ public class RobotController : MonoBehaviour
         }
 
     }
+
 
     public void Patrol()
     {
@@ -51,6 +65,7 @@ public class RobotController : MonoBehaviour
     public void GoTo()
     {
         ray.enabled = true;
+        Debug.Log("Waiting for location to go");
     }
 
     public void Calling(Transform t)

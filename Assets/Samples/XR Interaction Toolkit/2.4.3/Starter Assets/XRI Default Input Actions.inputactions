@@ -2219,6 +2219,102 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Radial Menu",
+            "id": "5f8b4172-78f5-44c1-8a5c-e433404a40a8",
+            "actions": [
+                {
+                    "name": "Activate",
+                    "type": "Button",
+                    "id": "cac921b5-d8e0-4a50-8279-4869404eaa94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "73d2c0e2-c40c-4c84-87c8-4abdac9a02ff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Touch Position",
+                    "type": "Value",
+                    "id": "b1b99b7f-13b6-49b1-990d-54b3f1aa4a3c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "37f5ac63-3a21-417a-bc8e-befa59158de3",
+                    "path": "<XRController>{RightHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2e6426e-2ec5-4a88-99c5-6dcc47b226f7",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d177509-6bfb-4f47-b651-7d8126106b7a",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard",
+            "id": "e6653b7d-a29a-4351-867e-0a576fae5c7d",
+            "actions": [
+                {
+                    "name": "FireStarter",
+                    "type": "Button",
+                    "id": "5abff686-bac0-4bea-b4b2-04547f29ff8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "33e907be-edb3-4736-90ab-86c955e39e65",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireStarter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

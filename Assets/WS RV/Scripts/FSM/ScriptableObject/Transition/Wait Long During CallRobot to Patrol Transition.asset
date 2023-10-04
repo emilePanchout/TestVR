@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrueState: {fileID: 11400000, guid: fcba8fe6acc1a7148ab5b9b15f9dfb29, type: 2}
   FalseState: {fileID: 0}
-  waitTime: 20
+  waitTime: 5

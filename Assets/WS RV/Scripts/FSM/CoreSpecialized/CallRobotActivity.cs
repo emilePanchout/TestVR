@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 namespace com.lineact.lit.FSM
 {
     [CreateAssetMenu(menuName = "LIT/FSM/Activity/CallRobotActivity")]
@@ -21,8 +22,10 @@ namespace com.lineact.lit.FSM
             // basic control turn mir 100 to the final direction
             var t = conf.TargetPoint;
             t.y = stateMachine.transform.position.y;
-            stateMachine.transform.LookAt(t);
-            stateMachine.transform.Translate(targetDirection * Speed * Time.deltaTime, Space.World);
+            //stateMachine.transform.LookAt(t);
+            //stateMachine.transform.Translate(targetDirection * Speed * Time.deltaTime, Space.World);
+            stateMachine.GetComponent<NavMeshAgent>().destination = conf.TargetPoint;
+
         }
 
         public override void Exit(BaseStateMachine stateMachine)
