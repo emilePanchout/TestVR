@@ -9,6 +9,12 @@ public class FireManager : MonoBehaviour
     public InputActionReference startFireRef;
     private InputAction startFire;
 
+    public GameObject particules;
+    public GameObject parentHead;
+    public GameObject trueHead;
+    public GameObject secondHead;
+
+    public bool hasExploded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,19 @@ public class FireManager : MonoBehaviour
 
     public void SetFire(InputAction.CallbackContext context)
     {
+        if(!hasExploded)
+        {
+            particules.SetActive(true);
+            trueHead.SetActive(false);
+
+            Instantiate(secondHead, parentHead.transform.position, parentHead.transform.rotation);
+            secondHead.GetComponent<Rigidbody>().AddForce(10, 10, 10);
+            hasExploded = true;
+        }
+        else
+        {
+            Debug.Log("Explosion has already occured");
+        }
         
     }
 }
