@@ -7,6 +7,7 @@ public class Extringuisher : MonoBehaviour
 {
 
     public InputActionReference activateRef;
+
     private InputAction activate;
     public GameObject particules;
 
