@@ -2315,6 +2315,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Extinguisher",
+            "id": "b21acdae-39ec-4d33-82a0-6e52205722d9",
+            "actions": [
+                {
+                    "name": "Activate",
+                    "type": "Button",
+                    "id": "9f2010b1-6893-4d85-8164-bb6c83cc583f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "83472f64-a017-43a9-9fc2-742a2fc750de",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

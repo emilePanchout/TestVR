@@ -9,12 +9,15 @@ public class FireManager : MonoBehaviour
     public InputActionReference startFireRef;
     private InputAction startFire;
 
-    public GameObject particules;
+    public List<GameObject> particulesList;
+    public int particleIterate =0;
     public GameObject parentHead;
     public GameObject trueHead;
     public GameObject secondHead;
 
-    public bool hasExploded = false;
+
+    public bool isOnFire = false;
+    public bool hasHead = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,22 +26,21 @@ public class FireManager : MonoBehaviour
         startFire.performed += SetFire;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetFire(InputAction.CallbackContext context)
     {
-        if(!hasExploded)
+        if(!isOnFire && hasHead)
         {
-            particules.SetActive(true);
+            foreach(GameObject fire in particulesList)
+            {
+                fire.SetActive(true);
+            }
+           
             trueHead.SetActive(false);
 
-            Instantiate(secondHead, parentHead.transform.position, parentHead.transform.rotation);
-            secondHead.GetComponent<Rigidbody>().AddForce(10, 10, 10);
-            hasExploded = true;
+            Instantiate(secondHead, parentHead.transform.position, parentHead.transform.rotation).GetComponent<Rigidbody>().AddForce(100, 100, 100);
+            isOnFire = true;
+            hasHead = false;
         }
         else
         {
@@ -46,4 +48,27 @@ public class FireManager : MonoBehaviour
         }
         
     }
+
+    public void StopFire()
+    {
+        foreach (GameObject fire in particulesList)
+        {
+            fire.SetActive(false);
+            isOnFire = false;
+        }
+    }
+
+    public void DecreaseFire()
+    {
+
+        particulesList[particleIterate].SetActive(false);
+        particleIterate += 1;
+
+        if(particleIterate == particulesList.Count)
+        {
+            particleIterate = 0;
+            isOnFire = false;
+        }
+    }
+
 }

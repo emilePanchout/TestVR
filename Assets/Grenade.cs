@@ -9,6 +9,7 @@ public class Grenade : MonoBehaviour
     public bool isLaunched = false;
 
     public GameObject grenadePrefab;
+    public Transform grenadeSpawn;
     public GameObject particules;
     public GameObject robot;
     public FireManager fireManager;
@@ -39,10 +40,8 @@ public class Grenade : MonoBehaviour
 
             if (explosionRadius > Vector3.Distance(transform.position,robot.transform.position))
             {
-                fireManager.particules.SetActive(false);
+                fireManager.StopFire();
             }
-
-            //Instantiate(grenadePrefab, transform.parent);
 
             Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
@@ -50,3 +49,5 @@ public class Grenade : MonoBehaviour
     }
 
 }
+
+

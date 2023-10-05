@@ -27,13 +27,17 @@ public class RadialMenuManager : MonoBehaviour
         select = selectRef.action;
 
 
-        activate.Enable();
-        touchPosition.Enable();
-        select.Enable();
-
         activate.performed += Activate;
         touchPosition.performed += TouchPosition;
         select.performed += Select;
+    }
+
+    private void Start()
+    {
+
+        activate.Enable();
+        touchPosition.Enable();
+        select.Enable();
     }
 
     private void OnDestroy()
@@ -68,12 +72,6 @@ public class RadialMenuManager : MonoBehaviour
         {
             go.SetActive(true);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame

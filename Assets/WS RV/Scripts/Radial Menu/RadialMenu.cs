@@ -82,7 +82,11 @@ public class RadialMenu : MonoBehaviour
 
     public void ActivateHighlightedSection()
     {
-        highlightedSection.onSelect.Invoke();
+        if(highlightedSection != null)
+        {
+            highlightedSection.onSelect.Invoke();
+        }
+
     }
 
     public void Show(bool value)
