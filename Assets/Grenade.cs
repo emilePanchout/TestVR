@@ -17,6 +17,8 @@ public class Grenade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        robot = GameObject.Find("tiago_dual");
+        fireManager = GameObject.Find("XR Origin (XR Rig)").GetComponent<FireManager>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class Grenade : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isLaunched && !collision.gameObject.CompareTag("PlayerController"))
+        if (isLaunched && !collision.gameObject.CompareTag("PlayerController") && !collision.gameObject.CompareTag("GrenadeTable"))
         {
             Instantiate(particules, transform.position, transform.rotation);
 
@@ -45,8 +47,11 @@ public class Grenade : MonoBehaviour
 
             Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
+
+            //Instantiate(grenadePrefab, grenadeSpawn.transform.position, grenadeSpawn.rotation);
         }
     }
+
 
 }
 

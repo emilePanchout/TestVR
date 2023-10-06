@@ -8,6 +8,7 @@ TagManager:
   - robot
   - PlayerController
   - RobotHead
+  - GrenadeTable
   layers:
   - Default
   - TransparentFX
