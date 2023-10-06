@@ -9,10 +9,15 @@ public class FlyCam : MonoBehaviour
     public InputActionReference switchRef;
     private InputAction switching;
 
+    public InputActionReference clickRef;
+    private InputAction clicking;
+
     public bool onVR = false;
 
     public Camera flyCam;
     public Camera VRCam;
+
+    public GameObject indicator;
 
 /// <summary>
 ///	wasd / arrows	- movement
@@ -30,12 +35,19 @@ public class FlyCam : MonoBehaviour
     public float fastZoomSensitivity = 50f;
     private bool looking = false;
 
+    private void Awake()
+    {
+        VRCam.depth = Camera.main.depth + 1;
+    }
     public void Start()
     {
+        clicking = clickRef.action;
+        clicking.performed += ShowClick;
+
         switching = switchRef.action;
         switching.performed += Switch;
 
-        VRCam.depth = Camera.main.depth + 1;
+
         onVR = true;
     }
     void Update()
@@ -142,22 +154,32 @@ public class FlyCam : MonoBehaviour
         Debug.Log("switching cam");
 
     }
+
+    public void ShowClick(InputAction.CallbackContext obj)
+    {
+        if(onVR)
+        {
+            Ray ray = VRCam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                indicator.transform.position = hit.point;
+            }
+        }
+        else
+        {
+            Ray ray = flyCam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                indicator.transform.position = hit.point;
+            }
+        }
+        
+    }
 }
-
-
-//void Start()
-//    {
-//        switching = switchRef.action;
-//        switching.performed += Switch;
-
-//        movement = movementRef.action;
-//        movement.performed += Move;
-
-//        VRCam.depth = Camera.main.depth + 1;
-//        onVR = true;
-
-//    }
-
 
 
 
