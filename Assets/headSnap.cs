@@ -21,6 +21,7 @@ public class headSnap : MonoBehaviour
             Destroy(other.gameObject);
             fireManager.trueHead.SetActive(true);
             fireManager.hasHead = true;
+            hasExploded = false;
             Debug.Log("snap");
         }
     }
